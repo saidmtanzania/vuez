@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3</title>
+    <style>
+        body,h1,h2,h3,p,span,button,
+        input {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            padding: 10px
+        }
+
+        h2 {
+            color: #008F7A;
+            font-family: monospace
+        }
+
+        p {
+            margin-top: 10px;
+            color: #005289;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px
+        }
+
+        input {
+            margin-top: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vue_app">
+        <h2 title="Vue.js 3">
+            {{msg.toUpperCase()}}
+        </h2>
+        <p>
+            {{list[1]}} {{car.brand}} {{city}}
+        </p>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            setup() {
+                return {
+                    city: 'London'
+                }
+            },
+            data() {
+                return {
+                    title:'Simple Vue Directives',
+                    html: '<b styles=""color:red"></b>',
+                    list: ['v-text', 'v-html','v-once','v-pre','v-is','v-clock']
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+</html>
