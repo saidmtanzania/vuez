@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        p {
+            font-family: monospace;
+            font-size: 22px;
+            color: #0081CF;
+            text-align: center
+        }
+
+        li {
+            font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+            color: #008F7A
+        }
+    </style>
+</head>
+
+<body>
+    <div id='vue_app'>
+        <p v-if='have'> 🍰 Have Your Cake</p>
+        <p v-else> 🍽 Eat Your Cake</p>
+        <ul>
+            <li v-if='fruit==`apple`'>apple</li>
+            <li v-else-if='fruit==`orange`'>orange</li>
+            <li v-else-if='fruit==`peach`'>peach</li>
+            <li v-else-if='fruit==`grape`'>grape</li>
+            <li v-else>other</li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    title: 'conditional rendering',
+                    vue_dir: 'v-show, v-if, v-else, & v-else-if',
+                    have: false,
+                    fruit: 'apple'
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+
+</html>
