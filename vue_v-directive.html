@@ -32,30 +32,28 @@
         input {
             margin-top: 10px
         }
+        [v-cloak]{display:none}
     </style>
 </head>
 
 <body>
     <div id="vue_app">
-        <h2 title="Vue.js 3">
-            {{msg.toUpperCase()}}
+        <div v-cloak>
+            <h2 title="Vue.js 3">
+            {{title.toUpperCase()}}
         </h2>
         <p>
-            {{list[1]}} {{car.brand}} {{city}}
+            A Long Static Paragraph
         </p>
+        </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         let app = Vue.createApp({
-            setup() {
-                return {
-                    city: 'London'
-                }
-            },
             data() {
                 return {
-                    title:'Simple Vue Directives',
+                    title:'Simple Vue 3 Directives',
                     html: '<b styles=""color:red"></b>',
                     list: ['v-text', 'v-html','v-once','v-pre','v-is','v-clock']
                 }
