@@ -40,17 +40,30 @@
     </style>
 </head>
 <body>
-    <h2 title="'Vue.js 3">First Vue.js 3 App</h2>
     <div id="vue_app">
-
+        <h2 title="Vue.js 3">
+            {{msg.toUpperCase()}}
+        </h2>
+        <p>
+            {{list[1]}} {{car.brand}} {{city}}
+        </p>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>
     <script>
-    let app = createApp({
-
+    let app = Vue.createApp({
+        setup(){return{
+                city : 'London'
+            }
+        },
+        data(){return{
+                msg: 'Hello From Vue 3',
+                list: ['apple', 'orange'],
+                car : {brand:'Nissan',model:'GT-R',engine:'4000 CC'}
+            }
+        }
     })
-    app.mount('#vue_app')
+    let vm = app.mount('#vue_app')
     </script>
 </body>
 </html>
