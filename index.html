@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuez</title>
+</head>
+
+<body>
+    <p>Reactivity: Vue2</p>
+    <h1 id="intro">??</h1>
+
+    <script type="text/javascript">
+        let info = {
+            msg: 'Send me to the H1 tag',num: 10,
+            test(){
+                console.log(this.msg)
+            }
+        }
+        document.getElementById('intro').innerHTML = info.msg;
+        let info_proxy = new Proxy(info, {
+            get(target, prop, receiver) {
+                if (typeof target[prop] == `string`) {
+                    target[prop] = target[prop] + ' return by proxy getter'
+                }
+                return Reflect.get(...arguments);
+            },
+            set(target, prop, newValue, receiver) {
+                if (typeof target[prop] == `string`) {
+                    newValue = newValue+ ' set by proxy setter'
+                }
+                document.getElementById('intro').innerHTML = newValue;
+                Reflect.set(...arguments);
+            }
+        });
+    </script>
+</body>
+
+</html>

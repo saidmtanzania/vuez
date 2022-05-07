@@ -1,0 +1,10 @@
+
+   // Object.defineProperty(info, 'reactive_msg',{
+        //     get(){
+        //         return info.msg;
+        //     },
+        //     set(newValue){
+        //         document.getElementById('intro').innerHTML = newValue; 
+        //         info.msg = newValue;
+        //     }
+        // })
