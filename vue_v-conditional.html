@@ -13,7 +13,6 @@
             color: #0081CF;
             text-align: center
         }
-
         li {
             font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
             color: #008F7A
@@ -26,10 +25,10 @@
         <p v-if='have'> 🍰 Have Your Cake</p>
         <p v-else> 🍽 Eat Your Cake</p>
         <ul>
-            <li v-if='fruit==`apple`'>apple</li>
-            <li v-else-if='fruit==`orange`'>orange</li>
-            <li v-else-if='fruit==`peach`'>peach</li>
-            <li v-else-if='fruit==`grape`'>grape</li>
+            <li v-if='fruit == `apple`'>apple</li>
+            <li v-else-if='fruit == `orange`'>orange</li>
+            <li v-else-if='fruit == `peach`'>peach</li>
+            <li v-else-if='fruit == `grape`'>grape</li>
             <li v-else>other</li>
         </ul>
     </div>
