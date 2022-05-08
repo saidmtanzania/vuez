@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Vue 3 Demo</title>
+<style>
+b{color:#2C73D2}
+i{color:#FF6F91}
+span{color:#C34A36}
+h2{background-color:#845EC2;color:#F9F871;padding:5px;text-align:center;font-size:42px}
+</style>
+</head>
+<body>
+    <div id='vue_app'>
+        <h1><b>{{brand}}</b> <i>{{model}}</i> <span>{{reg_year}}</span></h1>
+        <h2>Age: {{car_age}}</h2>
+    </div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    let app = Vue.createApp({
+        data(){return{
+            brand:'Toyota', model:'Land Cruiser', reg_year:2015
+        }},
+        computed:{
+            car_age(){
+                return new Date().getFullYear() - this.reg_year
+            },
+            full_name:{
+                get(){
+                    return this.brand+' '+this.model
+                },
+                set(newName){
+                    this.brand = newName[0]
+                    this.model = newName[1]
+                }
+            }
+        }
+    })
+    let vm = app.mount('#vue_app')
+</script>
+</body>
+</html>

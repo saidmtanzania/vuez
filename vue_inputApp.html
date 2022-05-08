@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        body,input,p,b,span{padding:0;margin:0}
+        input{margin-top:10px;margin-left:10px;margin-right:5px;width:45%;}
+        select{margin-top:20px;margin-left:15px;margin-right:5px}
+        p{margin-top:10px;margin-left:15px}
+        span{color:#0081CF;font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight:bold}
+    </style>
+</head>
+<body>
+    <div id='vue_app'>
+        <input v-model='msg' @change='check'/>
+        <span>{{max-msg.length}}/{{max}}</span>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    msg:'hello',max:10
+                }
+            },
+            methods:{
+                check(){
+                    if(this.msg.length>this.max){
+                        this.msg = this.msg.substring(0,this.max)
+                    }
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+</html>

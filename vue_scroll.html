@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Vue 3 Demo</title>
+    <style>
+        body,div,p,span,a,h1,h2,h3,hr{padding:0px;margin:0px;}
+        h1{background:wheat;color:navy;padding:15px;text-align:center;}
+        h2{font-size:42px;font-family:Verdana, Geneva, Tahoma, sans-serif}
+        h3{font-size:26px;margin:15px;font-family:monospace}
+        hr{border-top:#3CB881 2px solid;margin-top:15px;margin-bottom:15px;}
+        a{font-size:24px;padding:12px;text-decoration:none}
+        button{font-size:26px;margin-right:15px;padding:3px;}
+        .navi{
+            background:paleturquoise;padding:15px;
+            position:fixed;top:0;left:10px;right:10px;
+            height:40px;line-height:40px;
+        }
+        .home{
+            border:4px solid #3CB881;margin:10px;padding:25px;margin-top:80px;
+        }
+        .home p{font-size:55px;color:#3CB881;font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight: bolder}
+        .livingroom{
+            border:4px solid burlywood;margin:10px;padding:25px;
+            color:burlywood
+        }
+        .livingroom p{font-size:66px;margin-top:15px;text-align:center;}
+        .kitchen{
+            border:4px solid purple;margin:10px;padding:25px;
+            color:purple
+        }
+        .kitchen p{font-size:66px;margin-top:15px;text-align:center;}
+        .bedroom{
+            border:4px solid lightcoral;margin:10px;padding:25px;
+            color:lightcoral
+        }
+        .bedroom p{font-size:111px;margin-top:10px;text-align:center;}
+        .bathroom{
+            border:4px solid powderblue;margin:10px;padding:25px;
+            color:powderblue
+        }
+        .bathroom p{font-size:111px;margin-top:15px;text-align:center;}
+        p{font-size:32px;color:navy;font-family: sans-serif}
+        .err_page{
+            border: 4px solid grey;margin:15px;
+            padding-top:55px;padding-bottom:55px;
+            text-align:center;font-size:46px;color:grey;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+    </style></head>
+    <body>
+        <div id='vue_app'>
+            <!-- <h1>{{title}}</h1> -->
+            <div class='navi'>
+                <button><router-link :to="{name:'home',hash:'#home'}">Home</router-link></button>
+                <button><router-link :to="{name:'home',hash:'#livingroom'}">Livingroom</router-link></button>
+                <button><router-link :to="{name:'home',hash:'#kitchen'}">Kitchen</router-link></button>
+                <button><router-link :to="{name:'home',hash:'#bedroom'}">Bedroom</router-link></button>
+                <button><router-link :to="{name:'home',hash:'#bathroom'}">Bathroom</router-link></button>
+            </div>
+            <router-view name='default'></router-view>
+        </div>
+        <template id='home_temp'>
+            <div class='home' id='home'>
+                <p>{{title}}</p><hr>
+                <div style='border:2px dashed #3CB881;padding:5px;'>
+                    <router-view></router-view>
+                    <router-view name='Livingroom'></router-view>
+                    <router-view name='Kitchen'></router-view>
+                    <router-view name='Bedroom'></router-view>
+                    <router-view name='Bathroom'></router-view>
+                </div>
+            </div>
+        </template>
+        <template id='room_temp'><!-- Livingroom, Kitchen, Bedroom, & Bathroom-->
+            <div :class='cls_name' :id='cls_name'>
+                <h2>{{title}}</h2>
+                <p>{{msg}}</p>
+            </div>
+        </template>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="https://unpkg.com/vue-router@4"></script>
+        <script>
+        let app = Vue.createApp({
+            data(){return{
+                title:'scrollBehavior',
+            }}
+        })
+        let Home = {
+            name:'home',
+            template:'#home_temp',
+            data(){return{
+                title:'🏡 Home: 🛋 🍽 🛏 🛁',
+            }},
+        }
+        let Livingroom = {
+            name:'livingroom',
+            template:'#room_temp',
+            data(){
+                return{
+                    title:'🛋 Livingroom',msg:'🖼 🛋 🧸 🎮',
+                    cls_name:'livingroom'
+                }
+            }
+        }
+        let Kitchen = {
+            name:'kitchen',
+            template:'#room_temp',
+            data(){
+                return{
+                    title:'🍽 Kitchen',msg:'🍵 🥬 🧂 🍴',
+                    cls_name:'kitchen'
+                }
+            }
+        }
+        let Bedroom = {
+            name:'bedroom',
+            template:'#room_temp',
+            data(){
+                return{
+                    title:'🪟 Bedroom',msg:'🛏',
+                    cls_name:'bedroom'
+                }
+            }
+        }
+        let Bathroom = {
+            name:'bathroom',
+            template:'#room_temp',
+            data(){
+                return{
+                    title:'🚿 Bathroom',msg:'🛁',
+                    cls_name:'bathroom'
+                }
+            }
+        }
+        let routes = [
+            {path:'/',component:Home,children:[
+                {
+                    path:'',components:{Livingroom,Kitchen,Bedroom,Bathroom},
+                    name:'home'
+                },
+                {
+                    path:'/home/livingroom',component:Livingroom,
+                    name:'livingroom',alias:['study']
+                },
+                {
+                    path:'kitchen',component:Kitchen,
+                    name:'kitchen',alias:['my_kitchen','/my/own/kitchen']
+                },
+                {
+                    path:'/room/bedroom',component:Bedroom,
+                    name:'bedroom'
+                },
+                {
+                    path:'/room/bathroom',component:Bathroom,
+                    name:'bathroom'
+                }
+            ]},
+            
+        ]
+        let router = VueRouter.createRouter({
+            history:VueRouter.createWebHashHistory(),
+            routes,
+            scrollBehavior (to, from, savedPosition) {
+                return new Promise((resolve,reject)=>{
+                    setTimeout(()=>{
+                        if(savedPosition){
+                            resolve(savedPosition)
+                        }else{
+                            resolve({
+                                el:to.hash,
+                                behavior:'smooth',
+                                top:80
+                            })
+                        }
+                    },1000)
+                })
+            }
+        })
+        app.use(router)
+        let vm = app.mount('#vue_app')
+        </script>
+    </body>
+    </html>
