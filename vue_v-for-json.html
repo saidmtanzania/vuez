@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        p,
+        span {
+            font-family: monospace;
+            font-size: 18px;
+            color: #0081CF;
+        }
+
+        li {
+            font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+            color: #008F7A
+        }
+    </style>
+</head>
+
+<body>
+    <div id='vue_app'>
+        <ul>
+            <li v-for='(val,prop,index) in car' :key='index'>
+                {{index}} {{prop}} {{val}}
+            </li>
+        </ul>
+        <ul v-for='(elem,index) in json' :key='index'>
+            <li v-for='(val,prop,index) in elem' :key='index'>
+                {{prop}}: {{val}}
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    car: {
+                        brand: 'Toyota',
+                        model: 'Yaris GR',
+                        year: 2021
+                    },
+                    json: [{
+                            brand: 'Toyota',
+                            model: 'Camry',
+                            year: 2015
+                        },
+                        {
+                            brand: 'Nissan',
+                            model: 'GT-R',
+                            location: 'London'
+                        },
+                        {
+                            brand: 'Honda',
+                            model: 'NSX',
+                            owner: 'me'
+                        }
+                    ]
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+
+</html>

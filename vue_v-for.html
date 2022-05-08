@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        p,
+        span {
+            font-family: monospace;
+            font-size: 18px;
+            color: #0081CF;
+        }
+
+        li {
+            font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+            color: #008F7A
+        }
+    </style>
+</head>
+
+<body>
+    <div id='vue_app'>
+        <ul>
+            <li v-for='(elem,index) in cities' :key='index+elem' :ref='`li`+index'>
+                {{elem}} <b>{{index}}</b>
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    title: 'v-for: iterate over [] or {}',
+                    cities: ['London', 'Newcastle', 'Durham', 'Sunderland'],
+                    car: {
+                        brand: 'Toyota',
+                        model: 'Yaris GR',
+                        year: 2021
+                    },
+                    json: [{
+                            brand: 'Toyota',
+                            model: 'Camry',
+                            owner: 'me'
+                        },
+                        {
+                            brand: 'Nissan',
+                            model: 'GT-R',
+                            location: 'here'
+                        },
+                        {
+                            brand: 'Honda',
+                            model: 'NSX',
+                            year: 2018
+                        }
+                    ]
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+        let first = vm.$refs.li0
+    </script>
+</body>
+
+</html>

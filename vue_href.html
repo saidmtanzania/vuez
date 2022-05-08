@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        body,
+        p,
+        h1,
+        h2,
+        h3,
+        span {
+            padding: 0;
+            margin: 0
+        }
+
+        h2 {
+            color: #008F7A;
+            text-align: center;
+            margin: 10px
+        }
+
+        p {
+            color: #2A8EAC;
+            text-align: center;
+            font-family: monospace;
+            font-size: 14px
+        }
+    </style>
+</head>
+<body>
+    <div id="vue_app">
+        <h2>{{title}}</h2>
+        <p>{{msg}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    title: 'ref attribute & vm.$refs',
+                    msg: 'access page elem & child components'
+                }
+            }
+        })
+        let vm = app.mount('#vue_app');
+    </script>
+</body>
+
+</html>
