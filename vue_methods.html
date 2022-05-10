@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Vue 3 Demo</title>
+<style>
+body,div,button,h2{margin:0;padding:0}
+button{margin:10px;padding:5px;font-size:18px;}
+h2{background-color:#2C73D2;color:#F9F871;padding:15px;margin:10px;text-align:center;font-size:42px}
+</style></head>
+<body>
+    <div id='vue_app'>
+        <h2>{{num}}</h2>
+        <button v-on:click="increment($event,'my arg val')">increment</button>
+        <button @click="num++;console.log('no')">inline method</button>
+        <button @click='num++;m1($event);m2($event),test()'>multiple</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){return{
+                title:'Vue methods & v-on/@',
+                note:'event modifiers not included',
+                num:0
+            }},
+            methods:{
+                m1(){
+                    console.log('method ONE')
+                },
+                m2(){
+                    console.log('method TWO')
+                },
+                test(){
+                    console.log('the test method')
+                    return this
+                },
+                increment(event,msg){
+                    console.log('the increment method')
+                    console.log(event)
+                    console.log(msg)
+                    this.num++
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+</html>

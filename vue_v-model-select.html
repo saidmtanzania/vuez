@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        body,input,p,b,span{padding:0;margin:0}
+        select{margin-top:20px;margin-left:15px;margin-right:5px}
+        p{margin-top:10px;margin-left:15px}
+        span{color:#0081CF;font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight:bold}
+    </style>
+</head>
+<body>
+    <div id='vue_app'>
+        <!-- <select id='select' :value='picked' @input='picked=$event.target.value'> -->
+        <select v-model='list' multiple>
+            <option value="apple">Apple</option>
+            <option value="orange">Orange</option>
+            <option value="peach">Peach</option>
+        </select>
+        <p>You have picked: <span>{{picked}}</span></p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    picked:'orange',
+                    list:['apple','peach']
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+        let select = document.getElementById('select')
+    </script>
+</body>
+</html>

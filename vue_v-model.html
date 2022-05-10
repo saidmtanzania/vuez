@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+    body,h2,input{margin:0;padding:0}
+    body{text-align:center}
+    h2{color:#0081CF;margin:15px}
+    input{width:80%}
+    </style>
+</head>
+<body>
+    <div id='vue_app'>
+        <h2>{{msg}}</h2>
+        <input v-model.number.lazy.trim='msg'/>
+        <!-- <input id='input' :value='msg' @input="msg=$event.target.value"/> -->
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return{
+                    msg:'Form Input Bindings'
+                }
+            }
+        })
+        let vm = app.mount('#vue_app')
+        // document.getElementById('input').addEventListener('input',(event)=>{
+        //     console.log(event.target.value)
+        // })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 3 Demo</title>
+    <style>
+        body,input,p,b,span{padding:0;margin:0}
+        input{margin-top:20px;margin-left:15px;margin-right:5px}
+        p{margin-top:10px;margin-left:20px}
+        span{color:#0081CF;font-family:Verdana, Geneva, Tahoma, sans-serif;font-weight:bold}
+    </style>
+</head>
+<body>
+    <div id='vue_app'>
+        <input type="radio" value='apple'
+        v-model='picked'
+        ><b>Apple</b>
+        <input type="radio" value='orange'
+        v-model='picked'
+        ><b>Orange</b>
+        <input type="radio" value='peach'
+        @change="picked=$event.target.value"
+        :checked='picked==`peach`'
+        ><b>Peach</b>
+        <p>Picked: <span>{{picked}}</span></p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){return{
+                picked:'apple'
+            }}
+        })
+        let vm = app.mount('#vue_app')
+    </script>
+</body>
+</html>
