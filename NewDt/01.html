@@ -1,0 +1,19 @@
+<script src="https://unpkg.com/vue@next"></script>
+
+<div id="app">
+    {{message}}
+</div>
+
+<script>
+    const {
+        createApp
+    } = Vue
+    
+    createApp({
+        data() {
+            return {
+                message: 'hello Vue'
+            };
+        }
+    }).mount('#app')
+</script>

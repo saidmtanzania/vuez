@@ -8,3 +8,27 @@
         //         info.msg = newValue;
         //     }
         // })
+
+        <script src="https://unpkg.com/vue@next"></script>
+<script>
+    let app = Vue.createApp({
+        data() {
+            return {
+                key: value
+            }
+        },
+    });
+    let vm = app.mount('#vue_app')
+</script>
+
+<template>
+    <div id="vue_app">
+        <button @click="count++">Count is: {{count}}</button>
+    </div>
+</template>
+
+<style scoped>
+  button {
+    font-weight: bold;
+  }
+</style>
