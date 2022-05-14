@@ -1,5 +1,29 @@
-<script src="https://unpkg.com/vue@next"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-<script type="module">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
 
-</script>
+<body>
+    <div id="app">
+        <button @click="count++">Click times: {{count}}</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    count: 0
+                };
+            },
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
